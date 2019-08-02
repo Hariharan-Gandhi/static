@@ -1,16 +1,9 @@
-// var myList = [
-//     {"name": "abc", "age": 50},
-//     {"age": "25", "hobby": "swimming"},
-//     {"name": "xyz", "hobby": "programming"}
-// ];
-//
-// var myList = data
-
 $(window).on('load', () => {
-    regEventsForIndexPage()
+    getPods()
+    setInterval(getPods, refreshInterval * 10 * 1000);
 });
 
-function regEventsForIndexPage() {
+function getPods() {
     $.ajax('http://localhost:8002/health', {
         dataType: "json",
         method: "GET",
@@ -19,7 +12,6 @@ function regEventsForIndexPage() {
             buildHtmlTable('#tableMain')
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
             console.log(jqXHR.status + ' ' + errorThrown + ' - ' + jqXHR.responseText)
         }
     })
@@ -35,23 +27,6 @@ function buildHtmlTable(selector) {
 
     buildHtmlTableRest(selector)
 }
-
-// function buildHtmlTableRest(selector) {
-//     var headerTr$ = $('<tr/>');
-//     for (node in myList) {
-//         var $nsRow = $('<td></td>')
-//         for (ns in myList[node]) {
-//             var $heading = $('<h3></h3>').text(ns)
-//             $heading.appendTo($nsRow)
-//             $.each(myList[node][ns], function (i, pods) {
-//                 $('<span class="badge badge-pill badge-info"></span>').text(pods).appendTo($nsRow)
-//             });
-//             $('<hr>').appendTo($nsRow)
-//             headerTr$.append($nsRow);
-//         }
-//     }
-//     $(selector).append(headerTr$);
-// }
 
 function buildHtmlTableRest(selector) {
     const headerTr$ = $('<tr/>');
