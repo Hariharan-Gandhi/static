@@ -1,6 +1,6 @@
 $(window).on('load', () => {
     getPods()
-    setInterval(getPods, refreshInterval * 10 * 1000);
+    setInterval(getPods, 10 * 1000);
 });
 
 function getPods() {
