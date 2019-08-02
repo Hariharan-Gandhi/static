@@ -73,6 +73,7 @@ function buildHtmlTableRest(selector) {
                 } else if (pods.startsWith("elastic-master")) {
                     $pod.addClass("badge-info")
                 } else if (pods.startsWith("curator")) {
+                    return true;
                     $pod.addClass("badge-secondary")
                 } else if (pods.startsWith("kibana")) {
                     $pod.addClass("badge-primary")
